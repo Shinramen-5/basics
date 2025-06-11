@@ -1,0 +1,87 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNl3uESAoMK/v9y/VyO7bbu",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Shinramen-5/basics/blob/main/validating%20and%20counting%20nucleotides\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import collections\n",
+        "Nucleotides = [\"A\" , \"C\", \"G\", \"T\"]\n",
+        "def validataSeq(dna_seq):\n",
+        "     tmpseq = dna_seq.upper()\n",
+        "     for nuc in tmpseq:\n",
+        "          if nuc not in Nucleotides:\n",
+        "              return False\n",
+        "     return tmpseq\n",
+        "\n",
+        "def countNucFrequency(seq):\n",
+        "    tmpFreqDict = {\"A\": 0, \"C\": 0, \"G\": 0, \"T\":0 }\n",
+        "    for nuc in seq:\n",
+        "        tmpFreqDict[nuc] += 1\n",
+        "    return tmpFreqDict\n",
+        "    return dict(collections.Counter(seq))"
+      ],
+      "metadata": {
+        "id": "jrHiQIeBT4Qi"
+      },
+      "execution_count": 29,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "import random\n",
+        "rndDNAStr = \"AtttGttGc\"\n",
+        "randDNAStr = ''.join([random.choice(Nucleotides)\n",
+        "                      for nuc in range(50)])\n",
+        "print(validataSeq(randDNAStr))\n",
+        "print(countNucFrequency(randDNAStr))\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uYTgqmDzVGUc",
+        "outputId": "2a150631-5512-4547-e9a9-67a23507250e"
+      },
+      "execution_count": 48,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "CTCAGGGCGCGGTGTACCTTCGACCACGTTACTTACCAATGTCCGTAGGC\n",
+            "{'A': 9, 'C': 16, 'G': 13, 'T': 12}\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
